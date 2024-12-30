@@ -1,43 +1,18 @@
-﻿using System.Linq.Expressions;
+﻿using _01_Framework.Infrastructure;
 using ShopManagement.Application.Contracts.ProductCategory;
 using ShopManagement.Domain.ProductCategoryAgg;
 
 namespace ShopManagement.Infrastructure.EFCore.Repository
 {
-    public class ProductCategoryRepository : IProductCategoryRepository
+    public class ProductCategoryRepository : RepositoryBase<ProductCategory, long>, IProductCategoryRepository
     {
         private readonly ShopContext _context;
 
-        public ProductCategoryRepository(ShopContext context)
+        public ProductCategoryRepository(ShopContext context) :base(context) 
         {
             _context = context;
         }
-
-        public void Add(ProductCategory entity)
-        {
-            _context.ProductCategories.Add(entity);
-        }
-
-        public ProductCategory Get(long id)
-        {
-            return _context.ProductCategories.Find(id);
-        }
-
-        public List<ProductCategory> GetList()
-        {
-            return _context.ProductCategories.ToList();
-        }
-
-        public bool Exists(Expression<Func<ProductCategory, bool>> expression)
-        {
-            return _context.ProductCategories.Any(expression);
-        }
-
-        public void SaveChanges()
-        {
-            _context.SaveChanges();
-        }
-
+        #region [- GetDetails() -]
         public EditProductCategory GetDetails(long id)
         {
             return _context.ProductCategories.Select(x => new EditProductCategory
@@ -53,7 +28,9 @@ namespace ShopManagement.Infrastructure.EFCore.Repository
                 Slug = x.Slug
             }).FirstOrDefault(x => x.Id == id);
         }
+        #endregion
 
+        #region [- Search() -]
         public List<ProductCategoryViewModel> Search(ProductCategorySearchModel searchModel)
         {
             var query = _context.ProductCategories.Select(x => new ProductCategoryViewModel
@@ -63,10 +40,11 @@ namespace ShopManagement.Infrastructure.EFCore.Repository
                 Picture = x.Picture,
                 CreationDate = x.CreationDate.ToString()
             });
-            if(!string.IsNullOrWhiteSpace(searchModel.Name))
+            if (!string.IsNullOrWhiteSpace(searchModel.Name))
                 query = query.Where(x => x.Name.Contains(searchModel.Name));
             return query.OrderByDescending(x => x.Id).ToList();
-        }
+        } 
+        #endregion
     }
 
 }

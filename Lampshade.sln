@@ -21,6 +21,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SM.Infrastructure", "SM.Inf
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopManagement.Infrastructure.EFCore", "ShopManagement.Infrastructure.EFCore\ShopManagement.Infrastructure.EFCore.csproj", "{773CCC28-A621-4708-A79D-9ACFB182F65A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopManagement.Configuration", "ShopManagement.Configuration\ShopManagement.Configuration.csproj", "{9A080368-E99B-4B6C-BC2D-7E3025CB426D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,10 @@ Global
 		{773CCC28-A621-4708-A79D-9ACFB182F65A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{773CCC28-A621-4708-A79D-9ACFB182F65A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{773CCC28-A621-4708-A79D-9ACFB182F65A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A080368-E99B-4B6C-BC2D-7E3025CB426D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A080368-E99B-4B6C-BC2D-7E3025CB426D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A080368-E99B-4B6C-BC2D-7E3025CB426D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A080368-E99B-4B6C-BC2D-7E3025CB426D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -59,5 +65,6 @@ Global
 		{F304DA22-6CC3-4569-A323-540605C28FD7} = {1C7D237D-3EDD-4206-A3C3-DEEAEBDBDC81}
 		{08419960-7FAC-4050-9EE0-7A2547DFA782} = {28CAAE9D-61CB-4F76-87E0-1DFE8BBE6BE2}
 		{773CCC28-A621-4708-A79D-9ACFB182F65A} = {08419960-7FAC-4050-9EE0-7A2547DFA782}
+		{9A080368-E99B-4B6C-BC2D-7E3025CB426D} = {08419960-7FAC-4050-9EE0-7A2547DFA782}
 	EndGlobalSection
 EndGlobal
