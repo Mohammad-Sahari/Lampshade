@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopManagement.Infrastructu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopManagement.Configuration", "ShopManagement.Configuration\ShopManagement.Configuration.csproj", "{9A080368-E99B-4B6C-BC2D-7E3025CB426D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceHost", "ServiceHost\ServiceHost.csproj", "{7C056D47-4930-4358-9FA7-C61CC3487A1E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +55,10 @@ Global
 		{9A080368-E99B-4B6C-BC2D-7E3025CB426D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9A080368-E99B-4B6C-BC2D-7E3025CB426D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9A080368-E99B-4B6C-BC2D-7E3025CB426D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C056D47-4930-4358-9FA7-C61CC3487A1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C056D47-4930-4358-9FA7-C61CC3487A1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C056D47-4930-4358-9FA7-C61CC3487A1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C056D47-4930-4358-9FA7-C61CC3487A1E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
