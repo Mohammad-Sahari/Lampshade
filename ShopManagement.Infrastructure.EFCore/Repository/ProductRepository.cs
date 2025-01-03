@@ -16,13 +16,28 @@ namespace ShopManagement.Infrastructure.EFCore.Repository
 
         public List<ProductViewModel> Search(ProductSearchModel command)
         {
-            var query = _context.Products.Select(x => new ProductViewModel
+            var query = _context.Products.Include(x => x.Category).Select(x => new ProductViewModel
             {
                 Id = x.Id,
                 Name = x.Name,
-                Category = x.Category.ToString(),
-                
-            })
+                Category = x.Category.Name,
+                Code = x.Code,
+                Picture = x.Picture,
+                UnitPrice = x.UnitPrice,
+                CategoryId = x.CategoryId,
+                CreationDate = x.CreationDate.ToString()
+            });
+            if (!string.IsNullOrWhiteSpace(command.Name))
+                query = query.Where(x => x.Name.Contains(command.Name));
+            
+            if (!string.IsNullOrWhiteSpace(command.Code))
+                query = query.Where(x => x.Code.Contains(command.Code));
+
+            if (command.CategoryId != 0)
+                query = query.Where(x => x.CategoryId == command.CategoryId);
+
+            return query.OrderByDescending(x => x.Id).ToList(); 
+
         }
 
         public EditProduct GetDetails(long id)

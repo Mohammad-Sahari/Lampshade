@@ -13,7 +13,6 @@ namespace ShopManagement.Infrastructure.EFCore.Repository
             _context = context;
         }
 
-
         #region [- GetDetails() -]
         public EditProductCategory GetDetails(long id)
         {
@@ -32,7 +31,6 @@ namespace ShopManagement.Infrastructure.EFCore.Repository
         }
         #endregion
 
-
         #region [- Search() -]
         public List<ProductCategoryViewModel> Search(ProductCategorySearchModel searchModel)
         {
@@ -48,6 +46,16 @@ namespace ShopManagement.Infrastructure.EFCore.Repository
             return query.OrderByDescending(x => x.Id).ToList();
         } 
         #endregion
+        public List<ProductCategoryViewModel> GetProductCategories()
+        {
+            return _context.ProductCategories.Select(x => new ProductCategoryViewModel
+            {
+                Id = x.Id,
+                Name = x.Name
+            }).ToList();
+        }
+
+
     }
 
 }

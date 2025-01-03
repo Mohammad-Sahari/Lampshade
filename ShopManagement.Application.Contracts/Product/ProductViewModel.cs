@@ -11,4 +11,5 @@ public class ProductViewModel
     public double UnitPrice { get; set; }
     public string Category { get; set; }
     public string Code { get; set; }
+    public string CreationDate { get; set; }
 }
