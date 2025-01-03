@@ -12,6 +12,8 @@ namespace ShopManagement.Infrastructure.EFCore.Repository
         {
             _context = context;
         }
+
+
         #region [- GetDetails() -]
         public EditProductCategory GetDetails(long id)
         {
@@ -29,6 +31,7 @@ namespace ShopManagement.Infrastructure.EFCore.Repository
             }).FirstOrDefault(x => x.Id == id);
         }
         #endregion
+
 
         #region [- Search() -]
         public List<ProductCategoryViewModel> Search(ProductCategorySearchModel searchModel)
