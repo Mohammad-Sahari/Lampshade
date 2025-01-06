@@ -3,7 +3,7 @@ using ShopManagement.Domain.ProductAgg;
 
 namespace ShopManagement.Domain.ProductCategoryAgg
 {
-    public class ProductCategory : DomainBase
+    public class ProductCategory : EntityBase
     {
         public string Name { get; private set; }
         public string Description { get; private set; }

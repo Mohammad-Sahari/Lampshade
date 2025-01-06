@@ -1,10 +1,12 @@
 ﻿using _01_Framework.Domain;
 using ShopManagement.Domain.ProductCategoryAgg;
+using ShopManagement.Domain.ProductPictureAgg;
 
 namespace ShopManagement.Domain.ProductAgg
 {
-    public class Product : DomainBase
+    public class Product : EntityBase
     {
+        
         public string Name { get; private set; }
         public long CategoryId { get; private set; }
         public double UnitPrice { get; private set; }
@@ -19,6 +21,9 @@ namespace ShopManagement.Domain.ProductAgg
         public string Keywords { get; private set; }
         public string MetaDescription { get; private set; }
         public string Slug { get; private set; }
+        public List<ProductPicture> ProductPictures { get; private set; }
+        
+        
 
         public Product(string name, long categoryId,
             double unitPrice, string code, string shortDescription,

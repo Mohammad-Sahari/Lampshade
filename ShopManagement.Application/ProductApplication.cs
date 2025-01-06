@@ -81,5 +81,10 @@ namespace ShopManagement.Application
             _productRepository.SaveChanges();
             return operation.Succeeded();
         }
+
+        public List<ProductViewModel> GetProducts()
+        {
+            return _productRepository.GetProducts();
+        }
     }
 }

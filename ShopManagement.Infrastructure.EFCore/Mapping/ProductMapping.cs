@@ -21,10 +21,14 @@ namespace ShopManagement.Infrastructure.EFCore.Mapping
             builder.Property(x => x.Keywords).HasMaxLength(100).IsRequired();
             builder.Property(x => x.MetaDescription).HasMaxLength(150).IsRequired();
 
+            //Define a one-to-many relationship between Product and Category
             builder.HasOne(x => x.Category)
-                .WithMany(x => x.Products)
-                .HasForeignKey(x => x.CategoryId);
-
+                        .WithMany(x => x.Products)
+                            .HasForeignKey(x => x.CategoryId);
+            //Define a many-to-one relationship between Product and ProductPictures
+            builder.HasMany(x => x.ProductPictures)
+                        .WithOne(x => x.Product)
+                            .HasForeignKey(x => x.ProductId);
         }
     }
 }
