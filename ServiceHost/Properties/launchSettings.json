@@ -3,7 +3,7 @@
     "http": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "administration/shop/productcategories",
+      //"launchUrl": "administration/shop/productcategories",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
