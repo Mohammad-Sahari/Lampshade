@@ -45,6 +45,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiscountManagement.Infrastr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiscountManagement.Configuration", "DiscountManagement.Configuration\DiscountManagement.Configuration.csproj", "{DC1A8994-048D-4276-8B6A-26CEC5B73AF0}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "InventoryManagement", "InventoryManagement", "{4A3B696C-7CBA-4A34-A07D-3850FABFAC8D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IM.Domain", "IM.Domain", "{25336663-E445-4B20-8C18-3DA5F6C4C5B3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventoryManagement.Domain", "InventoryManagement.Domain\InventoryManagement.Domain.csproj", "{F97F1DC3-5360-4E42-986E-65ED9379CF55}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -103,6 +109,10 @@ Global
 		{DC1A8994-048D-4276-8B6A-26CEC5B73AF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DC1A8994-048D-4276-8B6A-26CEC5B73AF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DC1A8994-048D-4276-8B6A-26CEC5B73AF0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F97F1DC3-5360-4E42-986E-65ED9379CF55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F97F1DC3-5360-4E42-986E-65ED9379CF55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F97F1DC3-5360-4E42-986E-65ED9379CF55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F97F1DC3-5360-4E42-986E-65ED9379CF55}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -124,5 +134,7 @@ Global
 		{1A52C72A-DB19-4A29-86BA-99F3949FCAD2} = {56F2A6F0-47FE-45B7-BD07-FEFEEE2DCE9D}
 		{BC3DAAF6-BC76-4356-8ED7-FC8C382F3636} = {1A52C72A-DB19-4A29-86BA-99F3949FCAD2}
 		{DC1A8994-048D-4276-8B6A-26CEC5B73AF0} = {1A52C72A-DB19-4A29-86BA-99F3949FCAD2}
+		{25336663-E445-4B20-8C18-3DA5F6C4C5B3} = {4A3B696C-7CBA-4A34-A07D-3850FABFAC8D}
+		{F97F1DC3-5360-4E42-986E-65ED9379CF55} = {25336663-E445-4B20-8C18-3DA5F6C4C5B3}
 	EndGlobalSection
 EndGlobal
