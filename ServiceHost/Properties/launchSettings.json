@@ -2,7 +2,7 @@
   "profiles": {
     "http": {
       "commandName": "Project",
-      "launchBrowser": true,
+      "launchBrowser": false,
       //"launchUrl": "administration/shop/productcategories",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"

@@ -1,4 +1,5 @@
-﻿using _01_Framework.Infrastructure;
+﻿using _01_Framework.Application;
+using _01_Framework.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using ShopManagement.Application.Contracts.Product;
 using ShopManagement.Domain.ProductAgg;
@@ -28,7 +29,7 @@ namespace ShopManagement.Infrastructure.EFCore.Repository
                 UnitPrice = x.UnitPrice,
                 CategoryId = x.CategoryId,
                 IsInStock = x.IsInStock,
-                CreationDate = x.CreationDate.ToString()
+                CreationDate = x.CreationDate.ToFarsi()
             });
             if (!string.IsNullOrWhiteSpace(command.Name))
                 query = query.Where(x => x.Name.Contains(command.Name));

@@ -2,7 +2,7 @@
 {
     public class ApplicationMessages
     {
-        public const string DupplicateRecord = "این رکورد تکراری می باشد";
+        public const string DuplicateRecord = "این رکورد تکراری می باشد";
         public const string NotFound = "رکورد یافت نشد";
     }
 }

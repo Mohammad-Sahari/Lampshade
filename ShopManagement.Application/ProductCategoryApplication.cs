@@ -17,7 +17,7 @@ namespace ShopManagement.Application
         {
             var operation = new OperationResult();
             if (_productCategoryRepository.Exists(x=> x.Name == command.Name))
-                return operation.Failed(ApplicationMessages.DupplicateRecord);
+                return operation.Failed(ApplicationMessages.DuplicateRecord);
 
             var slug = command.Slug.Slugify();
             var productCategory = new ProductCategory(command.Name, command.Description, command.Picture,
@@ -37,7 +37,7 @@ namespace ShopManagement.Application
                 return operation.Failed(ApplicationMessages.NotFound);
 
             if (_productCategoryRepository.Exists(x=> x.Name == command.Name && x.Id != command.Id))
-                return operation.Failed(ApplicationMessages.DupplicateRecord);
+                return operation.Failed(ApplicationMessages.DuplicateRecord);
 
             var slug = command.Slug.Slugify();
             productCategory.Edit(command.Name, command.Description, command.Picture,
