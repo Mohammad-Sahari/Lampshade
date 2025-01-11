@@ -51,6 +51,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IM.Domain", "IM.Domain", "{
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventoryManagement.Domain", "InventoryManagement.Domain\InventoryManagement.Domain.csproj", "{F97F1DC3-5360-4E42-986E-65ED9379CF55}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IM.Application", "IM.Application", "{566A060B-F185-4D0C-87D4-42C607564095}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventoryManagement.Application.Contracts", "InventoryManagement.Application.Contracts\InventoryManagement.Application.Contracts.csproj", "{FDA2733C-3C5B-4071-BEF0-896D69371A31}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -113,6 +117,10 @@ Global
 		{F97F1DC3-5360-4E42-986E-65ED9379CF55}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F97F1DC3-5360-4E42-986E-65ED9379CF55}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F97F1DC3-5360-4E42-986E-65ED9379CF55}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDA2733C-3C5B-4071-BEF0-896D69371A31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDA2733C-3C5B-4071-BEF0-896D69371A31}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDA2733C-3C5B-4071-BEF0-896D69371A31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDA2733C-3C5B-4071-BEF0-896D69371A31}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -136,5 +144,7 @@ Global
 		{DC1A8994-048D-4276-8B6A-26CEC5B73AF0} = {1A52C72A-DB19-4A29-86BA-99F3949FCAD2}
 		{25336663-E445-4B20-8C18-3DA5F6C4C5B3} = {4A3B696C-7CBA-4A34-A07D-3850FABFAC8D}
 		{F97F1DC3-5360-4E42-986E-65ED9379CF55} = {25336663-E445-4B20-8C18-3DA5F6C4C5B3}
+		{566A060B-F185-4D0C-87D4-42C607564095} = {4A3B696C-7CBA-4A34-A07D-3850FABFAC8D}
+		{FDA2733C-3C5B-4071-BEF0-896D69371A31} = {566A060B-F185-4D0C-87D4-42C607564095}
 	EndGlobalSection
 EndGlobal
