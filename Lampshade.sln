@@ -55,6 +55,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IM.Application", "IM.Applic
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventoryManagement.Application.Contracts", "InventoryManagement.Application.Contracts\InventoryManagement.Application.Contracts.csproj", "{FDA2733C-3C5B-4071-BEF0-896D69371A31}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IM.Infrasturcture", "IM.Infrasturcture", "{CFB59DC8-9C0D-4523-9BE7-3B17604FE4F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventoryManagement.Infrastructure.EFCore", "InventoryManagement.Infrastructure.EFCore\InventoryManagement.Infrastructure.EFCore.csproj", "{DC2D3D72-84F6-4242-A074-ADF5927DD299}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventoryManagement.Infrastructure.Configuration", "InventoryManagement.Infrastructure.Configuration\InventoryManagement.Infrastructure.Configuration.csproj", "{53DE247A-0758-43A2-9702-31EE3B8A622E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -121,6 +127,14 @@ Global
 		{FDA2733C-3C5B-4071-BEF0-896D69371A31}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FDA2733C-3C5B-4071-BEF0-896D69371A31}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FDA2733C-3C5B-4071-BEF0-896D69371A31}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC2D3D72-84F6-4242-A074-ADF5927DD299}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC2D3D72-84F6-4242-A074-ADF5927DD299}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC2D3D72-84F6-4242-A074-ADF5927DD299}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC2D3D72-84F6-4242-A074-ADF5927DD299}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53DE247A-0758-43A2-9702-31EE3B8A622E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53DE247A-0758-43A2-9702-31EE3B8A622E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53DE247A-0758-43A2-9702-31EE3B8A622E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53DE247A-0758-43A2-9702-31EE3B8A622E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -146,5 +160,8 @@ Global
 		{F97F1DC3-5360-4E42-986E-65ED9379CF55} = {25336663-E445-4B20-8C18-3DA5F6C4C5B3}
 		{566A060B-F185-4D0C-87D4-42C607564095} = {4A3B696C-7CBA-4A34-A07D-3850FABFAC8D}
 		{FDA2733C-3C5B-4071-BEF0-896D69371A31} = {566A060B-F185-4D0C-87D4-42C607564095}
+		{CFB59DC8-9C0D-4523-9BE7-3B17604FE4F7} = {4A3B696C-7CBA-4A34-A07D-3850FABFAC8D}
+		{DC2D3D72-84F6-4242-A074-ADF5927DD299} = {CFB59DC8-9C0D-4523-9BE7-3B17604FE4F7}
+		{53DE247A-0758-43A2-9702-31EE3B8A622E} = {CFB59DC8-9C0D-4523-9BE7-3B17604FE4F7}
 	EndGlobalSection
 EndGlobal
