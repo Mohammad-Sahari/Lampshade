@@ -1,4 +1,4 @@
-﻿using DiscountManagement.Application;
+﻿    using DiscountManagement.Application;
 using DiscountManagement.Application.Contarct.ColleagueDiscount;
 using DiscountManagement.Application.Contarct.CustomerDiscount;
 using DiscountManagement.domain.ColleagueDiscountAgg;
@@ -13,14 +13,13 @@ namespace DiscountManagement.Configuration
 {
     public class DiscountManagementBootstrapper
     {   
-        public static void Configure(IServiceCollection services, IConfiguration configuration)
+        public static void Configure(IServiceCollection services, string connectionString)
         {
             services.AddTransient<ICustomerDiscountApplication, CustomerDiscountApplication>();
             services.AddTransient<ICustomerDiscountRepository, CustomerDiscountRepository>();
 
             services.AddTransient<IColleagueDiscountRepository, ColleagueDiscountRepository>();
             services.AddTransient<IColleagueDiscountApplication, ColleagueDiscountApplication>();
-            var connectionString = configuration.GetConnectionString("LampshadeDb");
             services.AddDbContext<DiscountContext>(x => x.UseSqlServer(connectionString));
         }
     }

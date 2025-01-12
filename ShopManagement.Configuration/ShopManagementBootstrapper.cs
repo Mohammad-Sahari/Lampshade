@@ -20,7 +20,7 @@ namespace ShopManagement.Configuration
 {
     public class ShopManagementBootstrapper
     {
-        public static void Configure(IServiceCollection services, IConfiguration configuration)
+        public static void Configure(IServiceCollection services, string connectionString)
         {
             services.AddTransient<IPorductCategoryApplication, ProductCategoryApplication>();
             services.AddTransient<IProductCategoryRepository, ProductCategoryRepository>();
@@ -38,7 +38,6 @@ namespace ShopManagement.Configuration
 
             services.AddTransient<IProductCategoryQuery, ProductCategoryQuery>();
 
-            var connectionString = configuration.GetConnectionString("LampshadeDb");
             services.AddDbContext<ShopContext>(x => x.UseSqlServer(connectionString));
         }
     }
