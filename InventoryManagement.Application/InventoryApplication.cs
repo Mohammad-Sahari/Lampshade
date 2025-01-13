@@ -31,7 +31,7 @@ namespace InventoryManagement.Application
             if (inventory is null)
                 return operation.Failed(ApplicationMessages.NotFound);
 
-            if (_inventoryReposiotry.Exists(x => x.ProductId == command.ProductId && x.Id == command.Id))
+            if (_inventoryReposiotry.Exists(x => x.ProductId == command.ProductId && x.Id != command.Id))
                 return operation.Failed(ApplicationMessages.DuplicateRecord);
 
             inventory.Edit(command.ProductId, command.UnitPrice);
