@@ -1,4 +1,6 @@
-﻿namespace InventoryManagement.Application.Contracts.Inventory;
+﻿using System.Security.AccessControl;
+
+namespace InventoryManagement.Application.Contracts.Inventory;
 
 public class InventoryViewModel
 {
@@ -8,4 +10,5 @@ public class InventoryViewModel
     public string Product { get; set; }
     public bool InStock { get; set; }
     public long CurrentCount { get; set; }
+    public string CreationDate { get; set; }
 }

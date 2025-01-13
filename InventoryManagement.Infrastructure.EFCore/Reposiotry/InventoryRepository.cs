@@ -1,4 +1,5 @@
-﻿using _01_Framework.Infrastructure;
+﻿using _01_Framework.Application;
+using _01_Framework.Infrastructure;
 using InventoryManagement.Application.Contracts.Inventory;
 using InventoryManagement.Domain.InventoryAgg;
 using ShopManagement.Domain.ProductAgg;
@@ -42,7 +43,8 @@ namespace InventoryManagement.Infrastructure.EFCore.Reposiotry
                     ProductId = x.ProductId,
                     UnitPrice = x.UnitPrice,
                     InStock = x.InStock,
-                    CurrentCount = x.CalculateCurrentCount()
+                    CurrentCount = x.CalculateCurrentCount(),
+                    CreationDate = x.CreationDate.ToFarsi()
                 });
 
             if(searchModel.ProductId > 0)
@@ -57,6 +59,23 @@ namespace InventoryManagement.Infrastructure.EFCore.Reposiotry
                 item.Product = products.FirstOrDefault(x => x.Id == item.ProductId)?.Name);
 
             return inventory;
+        }
+
+        public List<InventoryOperationViewModel> GetOperationLog(long inventoryId)
+        {
+            var inventory = _inventoryContext.Inventory.FirstOrDefault(x => x.Id == inventoryId);
+            return inventory.Operations.Select(x => new InventoryOperationViewModel
+            {
+                Id = x.Id,
+                Count = x.Count,
+                CurrentCount = x.CurrentCount,
+                Description = x.Description,
+                Operation = x.Operation,
+                OperationDate = x.OperationDate.ToFarsi(),
+                Operator = "مدیر سیستم",
+                OrderId = x.OrderId,
+                OperatorId = x.OperatorId
+            }).OrderByDescending(x=>x.Id).ToList();
         }
     }
 }
