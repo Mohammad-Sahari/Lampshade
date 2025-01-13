@@ -10,7 +10,6 @@ namespace ShopManagement.Application.Contracts.Product
         public string Name { get;  set; }
         [Range(1,100000, ErrorMessage = ValidationMessages.IsRequired)]
         public long CategoryId { get;  set; }
-        public double UnitPrice { get;  set; }
         [Required(ErrorMessage = ValidationMessages.IsRequired)]
 
         public string Code { get;  set; }

@@ -30,17 +30,14 @@
 
         </div>
         <div class="row">
-            <div class="form-group">
-                <label asp-for="UnitPrice" class="control-label">قیمت واحد</label>
-                <input class="form-control" asp-for="UnitPrice">
-                <span asp-validation-for="UnitPrice" class="error"></span>
-            </div>
+            <div class="col-md-12">
             <div class="form-group">
                 <label asp-for="CategoryId" class="control-label">گروه محصول</label>
-                <select class="form-control" asp-for="CategoryId" asp-items='new SelectList(Model.Categories, "Id","Name")'>
+                <select class="form-control" asp-for="CategoryId" asp-items='new SelectList(Model.Categories, "Id", "Name")'>
                     <option value="0">گروه محصول موردنظر را انتخاب کنید</option>
                 </select>
                 <span asp-validation-for="CategoryId" class="error"></span>
+            </div>
             </div>
         </div>
         <div class="row">

@@ -9,9 +9,7 @@ namespace ShopManagement.Domain.ProductAgg
         
         public string Name { get; private set; }
         public long CategoryId { get; private set; }
-        public double UnitPrice { get; private set; }
         public string Code { get; private set; }
-        public bool IsInStock { get; private set; }
         public string ShortDescription { get; private set; }
         public string Description { get; private set; }
         public string Picture { get; private set; }
@@ -25,34 +23,12 @@ namespace ShopManagement.Domain.ProductAgg
         
         
 
-        public Product(string name, long categoryId,
-            double unitPrice, string code, string shortDescription,
+        public Product(string name, long categoryId, string code, string shortDescription,
             string description, string picture, string pictureAlt,
             string pictureTitle, string keywords, string metaDescription, string slug)
         {
             Name = name;
             CategoryId = categoryId;
-            UnitPrice = unitPrice;
-            Code = code;
-            IsInStock = true;
-            ShortDescription = shortDescription;
-            Description = description;
-            Picture = picture;
-            PictureAlt = pictureAlt;
-            PictureTitle = pictureTitle;
-            Keywords = keywords;
-            MetaDescription = metaDescription;
-            Slug = slug;
-        }
-
-        public void Edit(string name, long categoryId,
-            double unitPrice, string code, string shortDescription,
-            string description, string picture, string pictureAlt,
-            string pictureTitle, string keywords, string metaDescription, string slug)
-        {
-            Name = name;
-            CategoryId = categoryId;
-            UnitPrice = unitPrice;
             Code = code;
             ShortDescription = shortDescription;
             Description = description;
@@ -64,14 +40,21 @@ namespace ShopManagement.Domain.ProductAgg
             Slug = slug;
         }
 
-        public void InStock()
+        public void Edit(string name, long categoryId, string code, string shortDescription,
+            string description, string picture, string pictureAlt,
+            string pictureTitle, string keywords, string metaDescription, string slug)
         {
-            IsInStock = true;
-        }
-
-        public void NotAvailable()
-        {
-            IsInStock = false;
+            Name = name;
+            CategoryId = categoryId;
+            Code = code;
+            ShortDescription = shortDescription;
+            Description = description;
+            Picture = picture;
+            PictureAlt = pictureAlt;
+            PictureTitle = pictureTitle;
+            Keywords = keywords;
+            MetaDescription = metaDescription;
+            Slug = slug;
         }
     }
 }

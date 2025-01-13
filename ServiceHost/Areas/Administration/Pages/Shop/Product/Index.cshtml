@@ -62,8 +62,6 @@
                                     <th>نام</th>
                                     <th>کد</th>
                                     <th>گروه</th>
-                                    <th>قیمت</th>
-                                    <th>موجودی</th>
                                     <th>تاریخ تولید</th>
                                     <th>عملیات</th>
                                 </tr>
@@ -79,43 +77,12 @@
                                     <td>@item.Name</td>
                                     <td>@item.Code</td>
                                     <td>@item.Category</td>
-                                    <td>@item.UnitPrice</td>
-                                    <td class="text-center">
-                                        @if (item.IsInStock)
-                                        {
-                                            <i class="fa-2x fa fa-check text-success"></i>
-                                        }
-                                        else
-                                        {
-                                            <i class="fa-2x fa fa-remove text-danger"></i>
-                                        }
-
-                                    </td>
                                     <td>@item.CreationDate</td>
                                     <td>
                                         <a class="btn btn-warning pull-right m-rl-5"
                                            href="#showmodal=@Url.Page("./Index", "Edit", new { id = item.Id})">
                                             <i class="fa fa-edit"></i> ویرایش
                                         </a>
-                                        @if (item.IsInStock)
-                                        {
-                                            @*<form method="post" asp-page-handler="NotAvailable" asp-route-id="@item.Id">
-                                            <button type="submit" class="btn btn-danger pull-right">
-                                                <i class="fa fa-trash"></i> اتمام موجودی محصول
-                                            </button>
-                                        </form>*@
-                                            <a asp-page="./Index" asp-route-id="@item.Id" asp-page-handler="NotAvailable" class="btn btn-danger">اتمام موجودی محصول</a>
-                                        }
-                                        else
-                                        {
-                                            @*<form method="post" asp-page-handler="Available" asp-route-id="@item.Id">
-                                                <button type="submit" class="btn btn-success pull-right">
-                                                    <i class="fa fa-trash"></i> محصول موجود است
-                                                </button>
-                                            </form>*@
-                                            <a asp-page="./Index" asp-route-id="@item.Id" asp-page-handler="Available" class="btn btn-success">محصول موجود است</a>
-
-                                        }
                                     </td>
                                 </tr>
                             }

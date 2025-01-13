@@ -20,8 +20,7 @@ namespace ShopManagement.Application
                 return operation.Failed(ApplicationMessages.DuplicateRecord);
 
             var slug = command.Slug.Slugify();
-            var product = new Product(command.Name, command.CategoryId,
-                command.UnitPrice, command.Code, command.ShortDescription,
+            var product = new Product(command.Name, command.CategoryId, command.Code, command.ShortDescription,
                 command.Description, command.Picture, command.PictureAlt,
                 command.PictureTitle, command.Keywords, command.MetaDescription, slug);
             _productRepository.Create(product);
@@ -39,8 +38,7 @@ namespace ShopManagement.Application
             if (_productRepository.Exists(x => x.Name == command.Name && x.Id != command.Id))
                 return operation.Failed(ApplicationMessages.DuplicateRecord);
             var slug = command.Slug.Slugify();
-            product.Edit(command.Name, command.CategoryId,
-                command.UnitPrice, command.Code, command.ShortDescription,
+            product.Edit(command.Name, command.CategoryId, command.Code, command.ShortDescription,
                 command.Description, command.Picture, command.PictureAlt,
                 command.PictureTitle, command.Keywords, command.MetaDescription, slug);
             _productRepository.SaveChanges();
@@ -56,30 +54,6 @@ namespace ShopManagement.Application
         public List<ProductViewModel> Search(ProductSearchModel searchModel)
         {
             return _productRepository.Search(searchModel);
-        }
-
-        public OperationResult InStock(long id)
-        {
-            var operation = new OperationResult();
-            var product = _productRepository.Get(id);
-            if (product is null)
-                return operation.Failed(ApplicationMessages.NotFound);
-
-            product.InStock();
-            _productRepository.SaveChanges();
-            return operation.Succeeded();
-        }
-
-        public OperationResult NotAvailable(long id)
-        {
-            var operation = new OperationResult();
-            var product = _productRepository.Get(id);
-            if (product is null)
-                return operation.Failed(ApplicationMessages.NotFound);
-
-            product.NotAvailable();
-            _productRepository.SaveChanges();
-            return operation.Succeeded();
         }
 
         public List<ProductViewModel> GetProducts()
