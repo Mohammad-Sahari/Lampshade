@@ -48,7 +48,7 @@ namespace InventoryManagement.Infrastructure.EFCore.Reposiotry
             if(searchModel.ProductId > 0)
                 query = query.Where(x=>x.ProductId == searchModel.ProductId);
 
-            if (!searchModel.InStock)
+            if (searchModel.InStock)
                 query = query.Where(x => !x.InStock);
 
             var inventory = query.OrderByDescending(x=> x.Id).ToList();
