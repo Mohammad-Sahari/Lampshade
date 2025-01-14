@@ -1,9 +1,10 @@
-﻿namespace _02_LampshadeQuery.Contract.ProductCategory
+﻿using _02_LampshadeQuery.Contract.Product;
+
+namespace _02_LampshadeQuery.Contract.ProductCategory
 {
     public interface IProductCategoryQuery
     {
         List<ProductCategoryQueryModel> GetProductCategories();
-        //List<ProductCategoryQueryModel> GetProductCategoriesWithProducts();
-        //ProductCategoryQueryModel GetProductCategoryWithProductsBy(string slug);
+        List<ProductCategoryQueryModel> GetProductCategoriesWithProducts();
     }
 }
