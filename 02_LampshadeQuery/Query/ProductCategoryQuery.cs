@@ -21,6 +21,56 @@ namespace _02_LampshadeQuery.Query
             _discountContext = discountContext;
         }
 
+        public ProductCategoryQueryModel GetProductCategoryWithProductsBy(string slug)
+        {
+            var inventory = _inventoryContext.Inventory
+                .Select(x => new { x.ProductId, x.UnitPrice }).ToList();
+
+            var discounts = _discountContext.CustomerDiscounts
+                .Where(x => x.StartDate < DateTime.Now && x.EndDate > DateTime.Now)
+                .Select(x => new { x.DiscountRate, x.ProductId,x.EndDate }).ToList();
+
+            var category = _context.ProductCategories
+                .Include(x => x.Products)
+                .ThenInclude(x => x.Category)
+                .Select(x => new ProductCategoryQueryModel
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                    Description = x.Description,
+                    Keywords = x.Keywords,
+                    Slug = x.Slug,
+                    MetaDescription = x.MetaDescription,
+                    Products = MapProducts(x.Products)
+                }).FirstOrDefault(x=>x.Slug == slug);
+
+
+                foreach (var product in category.Products)
+                {
+                    var productInventory = inventory
+                        .FirstOrDefault(x => x.ProductId == product.Id);
+                    if (productInventory != null)
+                    {
+                        var price = productInventory.UnitPrice;
+
+                        product.Price = price.ToMoney();
+                        var discount = discounts.FirstOrDefault(x => x.ProductId == product.Id);
+                        if (discount != null)
+                        {
+                            var discountRate = discount.DiscountRate;
+                            product.DiscountRate = discountRate;
+                            product.DiscountExpireDate = discount.EndDate.ToDiscountFormat();
+                            product.HasDiscount = discountRate > 0;
+                            var discountAmmount = Math.Round((price * product.DiscountRate) / 100);
+                            product.PriceWithDiscount = (price - discountAmmount).ToMoney();
+                        }
+                    }
+
+                }
+
+            return category;
+        }
+
         public List<ProductCategoryQueryModel> GetProductCategories()
         {
             return _context.ProductCategories.Select(x => new ProductCategoryQueryModel
@@ -40,7 +90,7 @@ namespace _02_LampshadeQuery.Query
                 .Select(x => new { x.ProductId,x.UnitPrice }).ToList();
             var discounts = _discountContext.CustomerDiscounts
                 .Where(x=>x.StartDate < DateTime.Now && x.EndDate>DateTime.Now)
-                .Select(x => new { x.DiscountRate,x.ProductId }).ToList();
+                .Select(x => new { x.DiscountRate,x.ProductId}).ToList();
 
             var categories = _context.ProductCategories
                 .Include(x => x.Products)
@@ -90,7 +140,6 @@ namespace _02_LampshadeQuery.Query
                 PictureAlt = product.PictureAlt,
                 PictureTitle = product.PictureTitle,
                 Slug = product.Slug
-
             }).ToList();
         }
     }
