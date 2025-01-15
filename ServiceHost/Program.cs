@@ -1,5 +1,7 @@
+using _01_Framework.Application;
 using DiscountManagement.Configuration;
 using InventoryManagement.Infrastructure.Configuration;
+using ServiceHost;
 using ShopManagement.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +12,7 @@ var services = builder.Services;
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+services.AddTransient<IFileUploader, FileUploader>();
 
 //Configure Modules
 ShopManagementBootstrapper.Configure(services, connectionString);
