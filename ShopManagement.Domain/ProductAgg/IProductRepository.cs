@@ -9,6 +9,6 @@ namespace ShopManagement.Domain.ProductAgg
         List<ProductViewModel> GetProducts();
         EditProduct GetDetails(long id);
 
-
+        Product GetProductWithCategory(long id);
     }
 }

@@ -45,7 +45,12 @@ namespace ShopManagement.Infrastructure.EFCore.Repository
             if (!string.IsNullOrWhiteSpace(searchModel.Name))
                 query = query.Where(x => x.Name.Contains(searchModel.Name));
             return query.OrderByDescending(x => x.Id).ToList();
-        } 
+        }
+
+        public string GetSlugBy(long id) => _context.ProductCategories
+                .Select(x => new { x.Slug, x.Id })
+                .FirstOrDefault(x => x.Id == id)?.Slug;
+
         #endregion
         public List<ProductCategoryViewModel> GetProductCategories()
         {
