@@ -1,4 +1,5 @@
-﻿using _01_Framework.Application;
+﻿using System.Security.Cryptography.X509Certificates;
+using _01_Framework.Application;
 using _01_Framework.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using ShopManagement.Application.Contracts.ProductPicture;
@@ -20,7 +21,6 @@ namespace ShopManagement.Infrastructure.EFCore.Repository
             return _context.ProductPictures.Select(x => new EditProductPicture
             {
                 Id = x.Id,
-                Picture = x.Picture,
                 PictureAlt = x.PictureAlt,
                 PictureTitle = x.PictureTitle,
                 ProductId = x.ProductId
@@ -47,5 +47,10 @@ namespace ShopManagement.Infrastructure.EFCore.Repository
             return query.OrderByDescending(x => x.Id).ToList();
 
         }
+
+        public ProductPicture GetWithProductAndCategory(long id) => _context.ProductPictures
+                .Include(x => x.Product)
+                .ThenInclude(x => x.Category)
+                .FirstOrDefault(x => x.Id == id);
     }
 }
