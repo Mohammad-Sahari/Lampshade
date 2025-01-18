@@ -121,5 +121,57 @@ namespace _02_LampshadeQuery.Query
 
             return products;
         }
+
+        public ProductQueryModel GetProductDetails(string slug)
+        {
+
+            var inventory = _inventoryContext.Inventory
+                .Select(x => new { x.ProductId, x.UnitPrice, x.InStock });
+            var discounts = _discountContext.CustomerDiscounts
+                .Where(x => x.StartDate < DateTime.Now && x.EndDate > DateTime.Now)
+                .Select(x => new { x.DiscountRate, x.ProductId,x.EndDate });
+            var product = _shopContext.Products
+                .Include(x => x.Category)
+                .Select(product => new ProductQueryModel
+                {
+                    Id = product.Id,
+                    Category = product.Category.Name,
+                    Name = product.Name,
+                    Picture = product.Picture,
+                    PictureAlt = product.PictureAlt,
+                    PictureTitle = product.PictureTitle,
+                    Slug = product.Slug,
+                    CategorySlug = product.Category.Slug,
+                    Code = product.Code,
+                    Description = product.Description,
+                    ShortDescription = product.ShortDescription,
+                    Keywords = product.Keywords,
+                    Metadescription = product.MetaDescription,
+                }).FirstOrDefault(x => x.Slug == slug);
+
+            if(product is null)
+                return new ProductQueryModel();
+
+            var productInventory = inventory
+                .FirstOrDefault(x => x.ProductId == product.Id);
+            if (productInventory != null)
+            {
+                product.InStock = productInventory.InStock;
+                var price = productInventory.UnitPrice;
+                product.Price = price.ToMoney();
+                var discount = discounts.FirstOrDefault(x => x.ProductId == product.Id);
+                if (discount != null)
+                {
+                    product.DiscountExpireDate = discount.EndDate.ToDiscountFormat();
+                    var discountRate = discount.DiscountRate;
+                    product.DiscountRate = discountRate;
+                    product.HasDiscount = discountRate > 0;
+                    var discountAmmount = Math.Round((price * product.DiscountRate) / 100);
+                    product.PriceWithDiscount = (price - discountAmmount).ToMoney();
+                }
+            }
+
+            return product;
+        }
     }
 }
