@@ -21,5 +21,15 @@
         public string Keywords { get; set; }
         public string Metadescription { get; set; }
         public bool InStock { get; set; }
+        public List<ProductPictureQueryModel> Pictures { get; set; }
+    }
+    public class ProductPictureQueryModel
+    {
+        public long Id { get; set; }
+        public string Picture { get; set; }
+        public string PictureAlt { get; set; }
+        public string PictureTitle { get; set; }
+        public long ProductId { get; set; }
+        public bool IsRemoved { get; set; }
     }
 }
