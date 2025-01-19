@@ -22,6 +22,7 @@
         public string Metadescription { get; set; }
         public bool InStock { get; set; }
         public List<ProductPictureQueryModel> Pictures { get; set; }
+        public List<CommentQueryModel> Comments { get; set; }
     }
     public class ProductPictureQueryModel
     {
@@ -31,5 +32,12 @@
         public string PictureTitle { get; set; }
         public long ProductId { get; set; }
         public bool IsRemoved { get; set; }
+    }
+
+    public class CommentQueryModel
+    {
+        public long Id { get; set; }
+        public string Name { get; set; }
+        public string Message { get; set; }
     }
 }
