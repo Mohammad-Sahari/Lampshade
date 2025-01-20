@@ -48,5 +48,12 @@ namespace BlogManagement.Infrastructure.EFCore.Repository
                 PictureTitle = x.PictureTitle
             }).FirstOrDefault(x => x.Id == id);
         }
+
+        public string GetSlugBy(long id)
+        {
+            return _context.ArticleCategories
+                .Select(x=> new {x.Id,x.Slug})
+                .FirstOrDefault(x=>x.Id == id).Slug;
+        }
     }
 }
