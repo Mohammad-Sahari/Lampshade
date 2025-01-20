@@ -1,4 +1,5 @@
-﻿using _01_Framework.Infrastructure;
+﻿using _01_Framework.Application;
+using _01_Framework.Infrastructure;
 using BlogManagement.Application.Contracts.ArticleCategory;
 using BlogManagement.Domain.ArticleCategoryAgg;
 
@@ -21,7 +22,9 @@ namespace BlogManagement.Infrastructure.EFCore.Repository
                     Id = x.Id,
                     Name = x.Name,
                     Picture = x.Picture,
-                    Description = x.Description
+                    Description = x.Description,
+                    DisplayOrder = x.DisplayOrder,
+                    CreationDate = x.CreationDate.ToFarsi(),
                 });
             if (!string.IsNullOrWhiteSpace(searchModel.Name))
                 query = query.Where(x => x.Name.Contains(searchModel.Name));
@@ -40,7 +43,9 @@ namespace BlogManagement.Infrastructure.EFCore.Repository
                 Keywords = x.Keywords,
                 MetaDescription = x.MetaDescription,
                 DisplayOrder = x.DisplayOrder,
-                Slug = x.Slug
+                Slug = x.Slug,
+                PictureAlt = x.PictureAlt,
+                PictureTitle = x.PictureTitle
             }).FirstOrDefault(x => x.Id == id);
         }
     }

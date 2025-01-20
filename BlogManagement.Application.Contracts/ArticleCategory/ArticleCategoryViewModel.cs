@@ -9,4 +9,6 @@ public class ArticleCategoryViewModel
     public string Picture { get; set; }
     public string Description { get; set; }
     public int DisplayOrder { get; set; }
+    public string CreationDate { get; set; }
+    public long ArticlesCount { get; set; }
 }
