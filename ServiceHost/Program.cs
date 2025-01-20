@@ -1,4 +1,5 @@
 using _01_Framework.Application;
+using BlogManagement.Infrastructure.Configuration;
 using DiscountManagement.Configuration;
 using InventoryManagement.Infrastructure.Configuration;
 using ServiceHost;
@@ -18,6 +19,7 @@ services.AddTransient<IFileUploader, FileUploader>();
 ShopManagementBootstrapper.Configure(services, connectionString);
 DiscountManagementBootstrapper.Configure(services, connectionString);
 InventoryManagementBootstrapper.Configure(services, connectionString);
+BlogManagementBootstrapper.Configure(services,connectionString);
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

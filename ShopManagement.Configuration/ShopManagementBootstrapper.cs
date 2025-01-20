@@ -50,6 +50,7 @@ namespace ShopManagement.Configuration
             services.AddTransient<ICommentRepository, CommentRepository>();
             services.AddTransient<ICommentApplication, CommentApplication>();
 
+            
             services.AddDbContext<ShopContext>(x => x.UseSqlServer(connectionString));
         }
     }
