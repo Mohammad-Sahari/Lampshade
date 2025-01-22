@@ -152,7 +152,7 @@
                 </div>
             </div>
         </div>
-<partial name="_Menu"/>
+        <partial name="_Menu" />
         <div class="content-page">
             <!-- Start content -->
             <div class="content">
@@ -172,7 +172,7 @@
         <!-- ============================================================== -->
         <!-- End Right content here -->
         <!-- ============================================================== -->
-        
+
         <div id="MainModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
             <div class="modal-dialog">
                 <div class="modal-content" id="ModalContent">
@@ -183,7 +183,7 @@
             </div>
         </div>
 
-        </div>
+    </div>
     <!-- END wrapper -->
     <!-- <script> -->
     <!-- var resizefunc = []; -->
@@ -228,9 +228,8 @@
 
     <!-- Chat -->
     <script src="~/AdminTheme/assets/js/jquery.chat.js"></script>
-    
-    <!-- Modal -->
 
+    <!-- Modal -->
     <!-- Todo -->
     <script src="~/AdminTheme/assets/js/jquery.todo.js"></script>
     <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
@@ -242,7 +241,7 @@
     <script src="~/AdminTheme/assets/js/persian-datepicker.min.js"></script>
 
     @RenderSection("Scripts", false)
-    
+
     <script>
         $('.persianDateInput').persianDatepicker({
             format: 'YYYY/MM/DD',
@@ -250,5 +249,26 @@
         });
     </script>
 
-    </body>
+    <script src="https://cdn.tiny.cloud/1/jfij2skogf8jozxa4l9923txee3of4lgw3a6xieyle3ollfj/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+  tinymce.init({
+    selector: '#BodyContent',
+    plugins: [
+      // Core editing features
+      'anchor', 'autolink', 'charmap', 'codesample', 'emoticons', 'image', 'link', 'lists', 'media', 'searchreplace', 'table', 'visualblocks', 'wordcount',
+      // Your account includes a free trial of TinyMCE premium features
+      // Try the most popular premium features until Feb 5, 2025:
+      'checklist', 'mediaembed', 'casechange', 'export', 'formatpainter', 'pageembed', 'a11ychecker', 'tinymcespellchecker', 'permanentpen', 'powerpaste', 'advtable', 'advcode', 'editimage', 'advtemplate', 'ai', 'mentions', 'tinycomments', 'tableofcontents', 'footnotes', 'mergetags', 'autocorrect', 'typography', 'inlinecss', 'markdown','importword', 'exportword', 'exportpdf'
+    ],
+    toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+    tinycomments_mode: 'embedded',
+    tinycomments_author: 'Author name',
+    mergetags_list: [
+      { value: 'First.Name', title: 'First Name' },
+      { value: 'Email', title: 'Email' },
+    ],
+    ai_request: (request, respondWith) => respondWith.string(() => Promise.reject('See docs to implement AI Assistant')),
+  });
+</script>
+</body>
 </html>
