@@ -109,5 +109,35 @@ namespace _01_Framework.Application
         {
             return $"{date.Year:0000}-{date.Month:00}-{date.Day:00}-{date.Hour:00}-{date.Minute:00}-{date.Second:00}";
         }
+
+        public static string GetMonthNumber(string month)
+        {
+            Dictionary<string, string> Calander = new Dictionary<string, string>();
+            Calander.Add("01", "فروردین");
+            Calander.Add("02", "اردیبهشت");
+            Calander.Add("03", "خرداد");
+            Calander.Add("04", "تیر");
+            Calander.Add("05", "مرداد");
+            Calander.Add("06", "شهریور");
+            Calander.Add("07", "مهر");
+            Calander.Add("08", "آبان");
+            Calander.Add("09", "آذر");
+            Calander.Add("10", "دی");
+            Calander.Add("11", "بهمن");
+            Calander.Add("12", "اسفند");
+            return Calander.FirstOrDefault(x => x.Key == month).Value;
+        }
+
+        public static string ExtractMonth(this string date)
+        {
+            var month = date.Substring(5, 2);
+            var result = GetMonthNumber(month);
+            return result;
+        }
+        public static string ExtractDay(this string date)
+        {
+            var day = date.Substring(8, 2);
+            return day;
+        }
     }
 }
