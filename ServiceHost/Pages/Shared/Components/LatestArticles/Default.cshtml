@@ -39,7 +39,7 @@
                                             <div class="col">
                                                 <div class="single-slider-post">
                                                     <div class="single-slider-post__image">
-                                                        <a asp-page="/Articles" asp-route-id="@article.Slug">
+                                                        <a asp-page="/Article" asp-route-slug="@article.Slug">
                                                             <img src="/ProductPictures/@article.Picture"
                                                                  class="img-fluid" alt="@article.PictureAlt" title="@article.PictureTitle">
                                                         </a>
@@ -51,15 +51,15 @@
                                                     </div>
                                                     <div class="single-slider-post__content">
                                                         <h3 class="title">
-                                                            <a href="blog-post-left-sidebar.html">
-                                                               @article.Title
+                                                            <a asp-page="/Article" asp-route-slug="@article.Slug">
+                                                                @article.Title
                                                             </a>
                                                         </h3>
                                                         @*<p class="post-meta">by <a href="#">HasTech</a></p>*@
                                                         <p class="short-desc">
                                                            @article.ShortDescription
                                                         </p>
-                                                        <a asp-page="/Articles" asp-route-id="@article.Slug" class="blog-post-link">
+                                                        <a asp-page="/Article" asp-route-slug="@article.Slug" class="blog-post-link">
                                                             ادامه مطلب
                                                         </a>
                                                     </div>

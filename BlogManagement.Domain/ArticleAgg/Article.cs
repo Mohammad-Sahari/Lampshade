@@ -45,7 +45,10 @@ namespace BlogManagement.Domain.ArticleAgg
             Title = title;
             ShortDescription = shortDescription;
             Description = description;
-            Picture = picture;
+
+            if (!string.IsNullOrWhiteSpace(picture))
+                Picture = picture;
+
             PictureAlt = pictureAlt;
             PictureTitle = pictureTitle;
             PublishDate = publishDate;

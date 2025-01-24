@@ -1,4 +1,5 @@
 ﻿using _02_LampshadeQuery.Contract.Article;
+using _02_LampshadeQuery.Contract.ArticleCategory;
 using _02_LampshadeQuery.Query;
 using BlogManagement.Application;
 using BlogManagement.Application.Contracts.Article;
@@ -26,6 +27,7 @@ namespace BlogManagement.Infrastructure.Configuration
 
             // Define Article Query services in DI container
             services.AddTransient<IArticleQuery, ArticleQuery>();
+            services.AddTransient<IArticleCategoryQuery, ArticleCategoryQuery>();
 
             // Define EFCore services in DI container
             services.AddDbContext<BlogContext>(x => x.UseSqlServer(connectionString));

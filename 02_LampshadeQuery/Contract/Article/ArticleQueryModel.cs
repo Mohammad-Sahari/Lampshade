@@ -16,6 +16,7 @@ namespace _02_LampshadeQuery.Contract.Article
         public string Slug { get;  set; }
         public string MetaDescriptio { get;  set; }
         public string Keywords { get;  set; }
+        public List<string> KeywordList { get; set; }
         public string CanonicalAddress { get;  set; }
         public long CategoryId { get;  set; }
         public string CategoryName { get; set; }
