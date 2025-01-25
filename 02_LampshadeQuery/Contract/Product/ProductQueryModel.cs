@@ -19,7 +19,7 @@
         public string ShortDescription { get; set; }
         public string Description { get; set; }
         public string Keywords { get; set; }
-        public string Metadescription { get; set; }
+        public string MetaDescription { get; set; }
         public bool InStock { get; set; }
         public List<ProductPictureQueryModel> Pictures { get; set; }
         public List<CommentQueryModel> Comments { get; set; }

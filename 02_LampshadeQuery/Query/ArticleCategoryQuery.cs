@@ -18,21 +18,26 @@ namespace _02_LampshadeQuery.Query
 
         public ArticleCategoryQueryModel GetArticleCategory(string slug)
         {
-            return _context.ArticleCategories.Select(x => new ArticleCategoryQueryModel
-            {
-                Name = x.Name,
-                Picture = x.Picture,
-                PictureAlt = x.PictureAlt,
-                PictureTitle = x.PictureTitle,
-                Description = x.Description,
-                DisplayOrder = x.DisplayOrder,
-                CanonicalAddress = x.CanonicalAddress,
-                Slug = x.Slug,
-                Keywords = x.Keywords,
-                MetaDescription = x.MetaDescription,
-                ArticleCount = x.Articles.Count,
-                Articles = MapArticles(x.Articles)
-            }).FirstOrDefault(x=>x.Slug == slug);
+            var article = _context.ArticleCategories
+                .Select(x => new ArticleCategoryQueryModel
+                {
+                    Name = x.Name,
+                    Picture = x.Picture,
+                    PictureAlt = x.PictureAlt,
+                    PictureTitle = x.PictureTitle,
+                    Description = x.Description,
+                    DisplayOrder = x.DisplayOrder,
+                    CanonicalAddress = x.CanonicalAddress,
+                    Slug = x.Slug,
+                    Keywords = x.Keywords,
+                    MetaDescription = x.MetaDescription,
+                    ArticleCount = x.Articles.Count,
+                    Articles = MapArticles(x.Articles)
+                }).FirstOrDefault(x => x.Slug == slug);
+
+            if (!string.IsNullOrWhiteSpace(article.Keywords))
+                article.KeywordList = article.Keywords?.Split(" ").ToList();
+            return article;
         }
 
         private static List<ArticleQueryModel> MapArticles(List<Article> articles)

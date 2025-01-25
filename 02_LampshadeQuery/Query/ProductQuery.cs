@@ -150,7 +150,7 @@ namespace _02_LampshadeQuery.Query
                     Description = product.Description,
                     ShortDescription = product.ShortDescription,
                     Keywords = product.Keywords,
-                    Metadescription = product.MetaDescription,
+                    MetaDescription = product.MetaDescription,
                     Pictures = MapProductPictures(product.ProductPictures),
                     Comments = MapComments(product.Comments)
                 }).FirstOrDefault(x => x.Slug == slug);

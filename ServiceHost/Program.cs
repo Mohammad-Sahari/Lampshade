@@ -1,3 +1,5 @@
+using System.Text.Encodings.Web;
+using System.Text.Unicode;
 using _01_Framework.Application;
 using BlogManagement.Infrastructure.Configuration;
 using DiscountManagement.Configuration;
@@ -14,6 +16,7 @@ var services = builder.Services;
 // Add services to the container.
 builder.Services.AddRazorPages();
 services.AddTransient<IFileUploader, FileUploader>();
+services.AddSingleton(HtmlEncoder.Create(UnicodeRanges.BasicLatin, UnicodeRanges.Arabic));
 
 //Configure Modules
 ShopManagementBootstrapper.Configure(services, connectionString);

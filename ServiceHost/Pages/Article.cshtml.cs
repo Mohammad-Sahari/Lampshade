@@ -1,6 +1,5 @@
 using _02_LampshadeQuery.Contract.Article;
 using _02_LampshadeQuery.Contract.ArticleCategory;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace ServiceHost.Pages
@@ -18,9 +17,9 @@ namespace ServiceHost.Pages
             _articleCategoryQuery = articleCategoryQuery;
         }
 
-        public void OnGet(string slug)
+        public void OnGet(string id)
         {
-            Article = _articleQuery.GetArticleDetails(slug);
+            Article = _articleQuery.GetArticleDetails(id);
             LatestArticles = _articleQuery.LatestArticles();
             ArticleCategories = _articleCategoryQuery.GetArticleCategories();
         }
