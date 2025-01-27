@@ -1,4 +1,6 @@
-﻿namespace _02_LampshadeQuery.Contract.Product
+﻿using _02_LampshadeQuery.Contract.Comment;
+
+namespace _02_LampshadeQuery.Contract.Product
 {
     public class ProductQueryModel
     {
@@ -23,21 +25,5 @@
         public bool InStock { get; set; }
         public List<ProductPictureQueryModel> Pictures { get; set; }
         public List<CommentQueryModel> Comments { get; set; }
-    }
-    public class ProductPictureQueryModel
-    {
-        public long Id { get; set; }
-        public string Picture { get; set; }
-        public string PictureAlt { get; set; }
-        public string PictureTitle { get; set; }
-        public long ProductId { get; set; }
-        public bool IsRemoved { get; set; }
-    }
-
-    public class CommentQueryModel
-    {
-        public long Id { get; set; }
-        public string Name { get; set; }
-        public string Message { get; set; }
     }
 }

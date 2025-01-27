@@ -1,9 +1,12 @@
 ﻿using System;
+using _02_LampshadeQuery.Contract.Comment;
+using BlogManagement.Application.Contracts.Article;
 
 namespace _02_LampshadeQuery.Contract.Article
 {
     public class ArticleQueryModel
     {
+        public long Id { get; set; }
         public string Title { get;  set; }
         public string ShortDescription { get;  set; }
         public string Description { get;  set; }
@@ -21,5 +24,6 @@ namespace _02_LampshadeQuery.Contract.Article
         public long CategoryId { get;  set; }
         public string CategoryName { get; set; }
         public string CategorySlug { get; set; }
+        public List<CommentQueryModel> Comments { get; set; }
     }
 }

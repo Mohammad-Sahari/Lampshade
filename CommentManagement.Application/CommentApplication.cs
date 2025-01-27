@@ -1,8 +1,8 @@
 ﻿using _01_Framework.Application;
-using ShopManagement.Application.Contracts.Comment;
-using ShopManagement.Domain.CommentAgg;
+using CommentManagement.Application.Contracts.Comment;
+using CommentManagement.Domain.CommentAgg;
 
-namespace ShopManagement.Application
+namespace CommentManagement.Application
 {
     public class CommentApplication : ICommentApplication
     {
@@ -17,7 +17,7 @@ namespace ShopManagement.Application
         {
             var operation = new OperationResult();
 
-            var comment = new Comment(command.Name, command.Email, command.Message, command.ProductId);
+            var comment = new Comment(command.Name, command.Email, command.Website, command.Message,command.OwnerRecordId,command.Type,command.ParentId);
             _repository.Create(comment);
             _repository.SaveChanges();
             return operation.Succeeded();
