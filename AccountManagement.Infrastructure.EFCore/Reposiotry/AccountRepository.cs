@@ -25,6 +25,8 @@ namespace AccountManagement.Infrastructure.EFCore.Reposiotry
                 Mobile = x.Mobile,
                 RoleId = 2,
                 Role = "مدیر سیستم",
+                CreationDate = x.CreationDate.ToFarsi(),
+                ProfilePhoto = x.ProfilePhoto
             });
 
             if (!string.IsNullOrWhiteSpace(searchModel.FullName))
