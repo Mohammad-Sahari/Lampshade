@@ -131,7 +131,7 @@
                                                     </h3>
                                                     @if (comment.ParentId > 0)
                                                     {
-                                                         <span>در پاسخ به :</span><a href="#comment-@comment.Id">@comment.ParentName</a>
+                                                         <span>در پاسخ به :</span><a href="#comment-@comment.ParentId">@comment.ParentName</a>
                                                     }
                                                     <p class="comment-text">
                                                        @comment.Message

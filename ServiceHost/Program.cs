@@ -1,6 +1,7 @@
 using System.Text.Encodings.Web;
 using System.Text.Unicode;
 using _01_Framework.Application;
+using AccountManagement.Infrastructure.Configuration;
 using BlogManagement.Infrastructure.Configuration;
 using CommentManagement.Infrastructure.Configuration;
 using DiscountManagement.Configuration;
@@ -17,6 +18,7 @@ var services = builder.Services;
 // Add services to the container.
 builder.Services.AddRazorPages();
 services.AddTransient<IFileUploader, FileUploader>();
+services.AddSingleton<IPasswordHasher, PasswordHasher>();
 services.AddSingleton(HtmlEncoder.Create(UnicodeRanges.BasicLatin, UnicodeRanges.Arabic));
 
 //Configure Modules
@@ -25,6 +27,7 @@ DiscountManagementBootstrapper.Configure(services, connectionString);
 InventoryManagementBootstrapper.Configure(services, connectionString);
 BlogManagementBootstrapper.Configure(services,connectionString);
 CommentManagementBootstrapper.Configure(services, connectionString);
+AccountManagementBootstrapper.Configure(services, connectionString);
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
