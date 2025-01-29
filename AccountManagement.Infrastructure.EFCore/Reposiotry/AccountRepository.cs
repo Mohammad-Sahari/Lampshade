@@ -17,14 +17,16 @@ namespace AccountManagement.Infrastructure.EFCore.Reposiotry
 
         public List<AccountViewModel> Search(AccountSearchModel searchModel)
         {
-            var query = _context.Accounts.Select(x => new AccountViewModel
+            var query = _context.Accounts
+                .Include(x=>x.Role)
+                .Select(x => new AccountViewModel
             {
                 Id = x.Id,
                 FullName = x.FullName,
                 UserName = x.UserName,
                 Mobile = x.Mobile,
-                RoleId = 2,
-                Role = "مدیر سیستم",
+                RoleId = x.RoleId,
+                Role = x.Role.Name,
                 CreationDate = x.CreationDate.ToFarsi(),
                 ProfilePhoto = x.ProfilePhoto
             });

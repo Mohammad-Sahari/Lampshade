@@ -47,14 +47,14 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="form-group">
-                    <label asp-for="Roles" class="control-label">نقش</label>
-                    @*<select class="form-control" asp-for="Roles" asp-items='new SelectList(Model.Roles, "Id", "Name")'>
+                    <label asp-for="RoleId" class="control-label">نقش</label>
+                    <select class="form-control" asp-for="RoleId" asp-items='new SelectList(Model.Roles, "Id", "Name")'>
                         <option value="0">نقش مورد نظر خود را انتخاب کنید</option>
-                    </select>*@
-                    <select class="form-control" asp-for="RoleId">
+                    </select>
+                    @*<select class="form-control" asp-for="RoleId">
                         <option value="1">مدیر سیستم</option>
                         <option value="2">کاربر سیستم</option>
-                    </select>
+                    </select>*@
                     <span asp-validation-for="RoleId" class="error"></span>
                 </div>
             </div>
