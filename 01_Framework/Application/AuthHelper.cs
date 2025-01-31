@@ -64,6 +64,13 @@ namespace _0_Framework.Application
             return null;
         }
 
+        public string CurrentAccountINfo()
+        {
+            if (IsAuthenticated())
+                return _contextAccessor.HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Name)?.Value;
+            return null;
+        }
+
         public bool IsAuthenticated()
         {
             //return _contextAccessor.HttpContext.User.Identity.IsAuthenticated;

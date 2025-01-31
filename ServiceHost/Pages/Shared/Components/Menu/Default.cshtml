@@ -162,7 +162,7 @@
                                                 <li>
                                                     @if (AuthHelper.IsAuthenticated())
                                                     {
-                                                        <span>خوش آمدید</span>
+                                                        <span>خوش آمدید</span> <a>@AuthHelper.CurrentAccountINfo()</a>
                                                     }
                                                     else
                                                     {

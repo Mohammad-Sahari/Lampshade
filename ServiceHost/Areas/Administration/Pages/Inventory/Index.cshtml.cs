@@ -1,12 +1,17 @@
+using _01_Framework.Application;
 using DiscountManagement.Application.Contarct.ColleagueDiscount;
 using InventoryManagement.Application.Contracts.Inventory;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using ShopManagement.Application.Contracts.Product;
+
 namespace ServiceHost.Areas.Administration.Pages.Inventory
 {
-    public class IndexModel : PageModel
+    [Authorize(Roles = Roles.Administrator)]
+
+public class IndexModel : PageModel
     {
         [TempData] public string Message { get; set; }
 

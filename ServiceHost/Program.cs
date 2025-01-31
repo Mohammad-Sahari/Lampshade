@@ -18,7 +18,14 @@ var services = builder.Services;
 
 
 // Add services to the container.
-builder.Services.AddRazorPages();
+builder.Services.AddRazorPages().AddRazorPagesOptions(options =>
+{
+    options.Conventions.AuthorizeAreaFolder("Administration", "/", "AdminPrivilege");
+    options.Conventions.AuthorizeAreaFolder("Administration", "/Shop", "ShopAccess");
+
+});
+
+
 services.AddTransient<IFileUploader, FileUploader>();
 services.AddTransient<IAuthHelper, AuthHelper>();
 services.AddSingleton<IPasswordHasher, PasswordHasher>();
@@ -37,6 +44,17 @@ services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
         o.LogoutPath = new PathString("/Account");
         o.AccessDeniedPath = new PathString("/AccessDenied");
     });
+
+services.AddAuthorization(options =>
+{
+    options.AddPolicy("AdminPrivilege",
+        builder => builder.RequireRole(new List<string> { Roles.Administrator,Roles.ContentAdmin }));
+    options.AddPolicy("ShopAccess",
+        builder => builder.RequireRole(new List<string> { Roles.Administrator }));
+
+});
+
+
 //Configure Modules
 ShopManagementBootstrapper.Configure(services, connectionString);
 DiscountManagementBootstrapper.Configure(services, connectionString);

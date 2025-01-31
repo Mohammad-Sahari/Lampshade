@@ -45,7 +45,7 @@ namespace AccountManagement.Application
             if (account == null)
                 return operation.Failed(ApplicationMessages.NotFound);
 
-            if (_accountRepository.Exists(x=>x.UserName == command.UserName || x.Mobile == command.Mobile && x.Id != command.Id))
+            if (_accountRepository.Exists(x=>(x.UserName == command.UserName || x.Mobile == command.Mobile)  && x.Id != command.Id))
                 return operation.Failed(ApplicationMessages.DuplicateRecord);
 
             var path = $"ProfilePhotos";
