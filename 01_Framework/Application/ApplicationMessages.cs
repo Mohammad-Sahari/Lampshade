@@ -7,5 +7,6 @@
         public const string ExistingUser = "با این نام کاربری قبلا ثبت نام شده";
         public const string PasswordsNotMatch = "رمز عبور و تکرار آن برابر نیست";
         public const string ExistingMobileNumber = "شماره موبایل وارد شده قبلا ثبت نام شده است";
+        public const string InvalidCredential = "نام کاربری یا رمز عبور اشتباه است";
     }
 }

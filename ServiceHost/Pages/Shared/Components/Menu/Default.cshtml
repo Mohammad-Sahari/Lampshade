@@ -1,4 +1,6 @@
-﻿@model _02_LampshadeQuery.MenuModel
+﻿@using _01_Framework.Application
+@model _02_LampshadeQuery.MenuModel
+@inject IAuthHelper AuthHelper;
 @{
 
 }
@@ -158,11 +160,18 @@
                                             <h4 class="title">پروفایل من</h4>
                                             <ul>
                                                 <li>
-                                                    <a href="login-register.html">ثبت نام</a>
+                                                    @if (AuthHelper.IsAuthenticated())
+                                                    {
+                                                        <span>خوش آمدید</span>
+                                                    }
+                                                    else
+                                                    {
+                                                    <a asp-page="/Account">ثبت نام - ورود</a>
+                                                    }
                                                 </li>
-                                                <li>
+                                                @*<li>
                                                     <a href="login-register.html">ورود</a>
-                                                </li>
+                                                </li>*@
                                             </ul>
                                         </div>
                                     </div>

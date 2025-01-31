@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Http;
 
 namespace AccountManagement.Application.Contracts.Account
 {
-    public class CreateAccount
+    public class RegisterAccount
     {
         [Required (ErrorMessage = ValidationMessages.IsRequired)]
         public string FullName { get;  set; }
@@ -18,7 +18,6 @@ namespace AccountManagement.Application.Contracts.Account
         [Required(ErrorMessage = ValidationMessages.IsRequired)]
 
         public string Mobile { get;  set; }
-        [Range(1,int.MaxValue,ErrorMessage = ValidationMessages.IsRequired)]
         public long RoleId { get;  set; }
 
         public List<RoleViewModel> Roles { get; set; }

@@ -15,6 +15,9 @@ namespace AccountManagement.Infrastructure.EFCore.Reposiotry
             _context = context;
         }
 
+        public Account? GetBy(string userName) => _context.Accounts.FirstOrDefault(x => x.UserName == userName);
+                                                 
+
         public List<AccountViewModel> Search(AccountSearchModel searchModel)
         {
             var query = _context.Accounts
