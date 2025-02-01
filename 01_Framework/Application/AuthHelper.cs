@@ -64,11 +64,19 @@ namespace _0_Framework.Application
             return null;
         }
 
-        public string CurrentAccountINfo()
+        public AuthViewModel CurrentAccountInfo()
         {
-            if (IsAuthenticated())
-                return _contextAccessor.HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Name)?.Value;
-            return null;
+            var result = new AuthViewModel();
+            if (!IsAuthenticated())
+                return result;
+
+            var claims = _contextAccessor.HttpContext.User.Claims.ToList();
+            result.Id = long.Parse(claims.FirstOrDefault(x => x.Type == "AccountId").Value);
+            result.Username = claims.FirstOrDefault(x => x.Type == "Username").Value;
+            result.RoleId = long.Parse(claims.FirstOrDefault(x => x.Type == ClaimTypes.Role).Value);
+            result.Fullname = claims.FirstOrDefault(x => x.Type == ClaimTypes.Name).Value;
+            result.Role = Roles.GetRoleBy(result.RoleId);
+            return result;
         }
 
         public bool IsAuthenticated()

@@ -2,7 +2,6 @@
 @model _02_LampshadeQuery.MenuModel
 @inject IAuthHelper AuthHelper;
 @{
-
 }
 
 <div class="header-area header-sticky">
@@ -162,7 +161,7 @@
                                                 <li>
                                                     @if (AuthHelper.IsAuthenticated())
                                                     {
-                                                        <span>خوش آمدید</span> <a>@AuthHelper.CurrentAccountINfo()</a>
+                                                        <span>خوش آمدید</span> <a>@AuthHelper.CurrentAccountInfo()</a>
                                                     }
                                                     else
                                                     {

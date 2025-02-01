@@ -109,7 +109,7 @@ namespace _02_LampshadeQuery.Query
                         .FirstOrDefault(x => x.ProductId == product.Id);
                     if (productInventory != null)
                     {
-                    var price = productInventory.UnitPrice;
+                        var price = productInventory.UnitPrice;
                         
                         product.Price = price.ToMoney();
                         var discount = discounts.FirstOrDefault(x => x.ProductId == product.Id);

@@ -1,5 +1,7 @@
+using _01_Framework.Application;
 using DiscountManagement.Application.Contarct.ColleagueDiscount;
 using DiscountManagement.Application.Contarct.CustomerDiscount;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;

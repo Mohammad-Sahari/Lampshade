@@ -22,6 +22,8 @@ builder.Services.AddRazorPages().AddRazorPagesOptions(options =>
 {
     options.Conventions.AuthorizeAreaFolder("Administration", "/", "AdminPrivilege");
     options.Conventions.AuthorizeAreaFolder("Administration", "/Shop", "ShopAccess");
+    options.Conventions.AuthorizeAreaFolder("Administration", "/Discount", "DiscountAccess");
+    options.Conventions.AuthorizeAreaFolder("Administration", "/Accounts", "AccountAccess");
 
 });
 
@@ -49,7 +51,14 @@ services.AddAuthorization(options =>
 {
     options.AddPolicy("AdminPrivilege",
         builder => builder.RequireRole(new List<string> { Roles.Administrator,Roles.ContentAdmin }));
+
     options.AddPolicy("ShopAccess",
+        builder => builder.RequireRole(new List<string> { Roles.Administrator }));
+    
+    options.AddPolicy("DiscountAccess",
+        builder => builder.RequireRole(new List<string> { Roles.Administrator }));  
+    
+    options.AddPolicy("AccountAccess",
         builder => builder.RequireRole(new List<string> { Roles.Administrator }));
 
 });
