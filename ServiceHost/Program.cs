@@ -18,7 +18,9 @@ var services = builder.Services;
 
 
 // Add services to the container.
-builder.Services.AddRazorPages().AddRazorPagesOptions(options =>
+builder.Services.AddRazorPages()
+    .AddMvcOptions(options => options.Filters.Add<SecurityPageFilter>())
+    .AddRazorPagesOptions(options =>
 {
     options.Conventions.AuthorizeAreaFolder("Administration", "/", "AdminPrivilege");
     options.Conventions.AuthorizeAreaFolder("Administration", "/Shop", "ShopAccess");

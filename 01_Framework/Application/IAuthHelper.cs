@@ -8,5 +8,6 @@
         void DeActiveUser(long id);
         string CurrentAccountRole();
         AuthViewModel CurrentAccountInfo();
+        List<int> GetPermissions();
     }
 }

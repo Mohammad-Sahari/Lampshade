@@ -1,6 +1,8 @@
 using _01_Framework.Application;
+using _01_Framework.Infrastructure;
 using DiscountManagement.Application.Contarct.ColleagueDiscount;
 using InventoryManagement.Application.Contracts.Inventory;
+using InventoryManagement.Infrastructure.Configuration.Permissions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -28,7 +30,7 @@ public class IndexModel : PageModel
             _productApplication = productApplication;
             _inventoryApplication = inventoryApplication;
         }
-
+        [NeedsPermission(InventoryPermissions.ListInventories)]
         public void OnGet(InventorySearchModel searchModel)
         {
             Products = new SelectList(_productApplication.GetProducts(), "Id", "Name");
@@ -43,6 +45,7 @@ public class IndexModel : PageModel
             };
             return Partial("./Create", command);
         }
+        [NeedsPermission(InventoryPermissions.CreateInventories)]
 
         public JsonResult OnPostCreate(CreateInventory command)
         {
@@ -56,6 +59,7 @@ public class IndexModel : PageModel
             Inventory.Products = _productApplication.GetProducts();
             return Partial("Edit", Inventory);
         }
+        [NeedsPermission(InventoryPermissions.EditInventories)]
 
         public JsonResult OnPostEdit(EditInventory command)
         {
@@ -71,6 +75,8 @@ public class IndexModel : PageModel
             };
             return Partial("Increase", command);
         }
+        [NeedsPermission(InventoryPermissions.Increase)]
+
         public JsonResult OnPostIncrease(IncreaseInventory command)
         {
             var result = _inventoryApplication.Increase(command);
@@ -84,11 +90,14 @@ public class IndexModel : PageModel
             };
             return Partial("Decrease", command);
         }
+        [NeedsPermission(InventoryPermissions.Decrease)]
+
         public JsonResult OnPostDecrease(DecreaseInventory command)
         {
             var result = _inventoryApplication.Decrease(command);
             return new JsonResult(result);
         }
+        [NeedsPermission(InventoryPermissions.OperationLog)]
 
         public IActionResult OnGetOperationLog(long id)
         {
