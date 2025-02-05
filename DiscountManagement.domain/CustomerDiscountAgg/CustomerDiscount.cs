@@ -13,6 +13,9 @@ namespace DiscountManagement.domain.CustomerDiscountAgg
         public CustomerDiscount(long productId, int discountRate, DateTime startDate, DateTime endDate, string eventName)
         {
             ProductId = productId;
+            //OPTIMIZE: implement DR range so DR will always be between 0 and 100.
+            if (discountRate is < 0 or > 100)
+                throw new ArgumentOutOfRangeException(nameof(discountRate), "DiscountRate must be between 0 and 100.");
             DiscountRate = discountRate;
             StartDate = startDate;
             EndDate = endDate;

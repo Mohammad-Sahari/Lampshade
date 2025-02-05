@@ -11,6 +11,7 @@ namespace _01_Framework.Application
         public const string Administrator = "1";
         public const string SystemUser = "2";
         public const string ContentAdmin = "3";
+        public const string ColleagueUser = "4";
 
         public static string GetRoleBy(long id)
         {
@@ -20,6 +21,8 @@ namespace _01_Framework.Application
                     return "مدیر سیستم";
                 case 3:
                     return "ادمین محتوا سایت";
+                case 4:
+                    return "کاربر همکار";
                 default:
                     return "";
                 break;

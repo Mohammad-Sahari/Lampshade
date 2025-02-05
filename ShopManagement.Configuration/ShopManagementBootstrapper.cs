@@ -1,4 +1,5 @@
 ﻿using _01_Framework.Infrastructure;
+using _02_LampshadeQuery.Contract;
 using _02_LampshadeQuery.Contract.Product;
 using _02_LampshadeQuery.Contract.ProductCategory;
 using _02_LampshadeQuery.Contract.Slide;
@@ -47,7 +48,11 @@ namespace ShopManagement.Configuration
 
             // Registering permission services in DI container
             services.AddTransient<IPermissionExposer, ShopPermissionExposer>();
-            
+
+            // Registering CartCalculatorService services in DI container
+            services.AddTransient<ICartCalculatorService, CartCalculateService>();
+
+            // Registering DbContext in DI container
             services.AddDbContext<ShopContext>(x => x.UseSqlServer(connectionString));
         }
     }

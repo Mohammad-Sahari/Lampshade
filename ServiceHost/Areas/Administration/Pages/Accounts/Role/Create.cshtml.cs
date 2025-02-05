@@ -21,6 +21,7 @@ namespace ServiceHost.Areas.Administration.Pages.Accounts.Role
         public IActionResult OnPost(CreateRole command)
         {
             var result = _roleApplication.Create(command);
+            //FIX: after role creation user should redirect to role index.
             return RedirectToPage("/Index");
         }
     }

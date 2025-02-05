@@ -2,6 +2,7 @@ using System.Text.Encodings.Web;
 using System.Text.Unicode;
 using _0_Framework.Application;
 using _01_Framework.Application;
+using _02_LampshadeQuery.Contract;
 using AccountManagement.Infrastructure.Configuration;
 using BlogManagement.Infrastructure.Configuration;
 using CommentManagement.Infrastructure.Configuration;

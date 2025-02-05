@@ -5,6 +5,7 @@ using CommentManagement.Infrastructure.EFCore;
 using DiscountManagement.Infrastructure.EFCore;
 using InventoryManagement.Infrastructure.EFCore;
 using Microsoft.EntityFrameworkCore;
+using ShopManagement.Application.Contracts.Order;
 using ShopManagement.Domain.ProductPictureAgg;
 using ShopManagement.Infrastructure.EFCore;
 
@@ -186,6 +187,35 @@ namespace _02_LampshadeQuery.Query
                 }).OrderByDescending(x => x.Id).ToList();
 
             return product;
+        }
+
+        public List<CartItem> CheckInventroyStatus(List<CartItem> cartItems)
+        {
+            //var inventory = _inventoryContext.Inventory.ToList();
+            
+            //foreach (var cartItem in cartItems)
+            //{
+            //    var item = inventory.FirstOrDefault(x => x.ProductId == cartItem.Id);
+            //    if (item == null || item.CalculateCurrentCount() < cartItem.Count)
+            //        cartItem.IsInStock = false;
+            //}
+            //return cartItems;
+
+            var inventory = _inventoryContext.Inventory
+                .ToDictionary(x => x.ProductId, x => x.CalculateCurrentCount());
+
+            foreach (var cartItem in cartItems)
+            {
+                if (inventory.TryGetValue(cartItem.Id, out var availableCount) && availableCount < cartItem.Count)
+                {
+                    cartItem.IsInStock = false;
+                }
+                else
+                {
+                    cartItem.IsInStock = true;
+                }
+            }
+            return cartItems;
         }
 
         private static List<ProductPictureQueryModel> MapProductPictures(List<ProductPicture> pictures)
