@@ -11,7 +11,9 @@ using DiscountManagement.Configuration;
 using InventoryManagement.Infrastructure.Configuration;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using ServiceHost;
+using ServiceHost.Controllers;
 using ShopManagement.Configuration;
+using ShopManagement.Presentation.Api;
 
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
@@ -29,7 +31,8 @@ builder.Services.AddRazorPages()
     options.Conventions.AuthorizeAreaFolder("Administration", "/Discount", "DiscountAccess");
     options.Conventions.AuthorizeAreaFolder("Administration", "/Accounts", "AccountAccess");
 
-});
+}).AddApplicationPart(typeof(ProductController).Assembly)
+    .AddApplicationPart(typeof(InventoryController).Assembly);
 
 
 services.AddTransient<IFileUploader, FileUploader>();
