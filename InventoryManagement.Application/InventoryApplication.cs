@@ -6,92 +6,94 @@ namespace InventoryManagement.Application
 {
     public class InventoryApplication : IInventoryApplication
     {
-        private readonly IInventoryRepository _inventoryReposiotry;
+        private readonly IInventoryRepository _inventoryRepository;
+        private readonly IAuthHelper _authHelper;
 
-        public InventoryApplication(IInventoryRepository inventoryReposiotry)
+        public InventoryApplication(IInventoryRepository inventoryRepository, IAuthHelper authHelper)
         {
-            _inventoryReposiotry = inventoryReposiotry;
+            _inventoryRepository = inventoryRepository;
+            _authHelper = authHelper;
         }
 
         public OperationResult Create(CreateInventory command)
         {
             var operation = new OperationResult();
-            if (_inventoryReposiotry.Exists(x => x.ProductId == command.ProductId))
+            if (_inventoryRepository.Exists(x => x.ProductId == command.ProductId))
                 return operation.Failed(ApplicationMessages.DuplicateRecord);
             var inventory = new Inventory(command.ProductId, command.UnitPrice);
-            _inventoryReposiotry.Create(inventory);
-            _inventoryReposiotry.SaveChanges();
+            _inventoryRepository.Create(inventory);
+            _inventoryRepository.SaveChanges();
             return operation.Succeeded();
         }
 
         public OperationResult Edit(EditInventory command)
         {
             var operation = new OperationResult();
-            var inventory = _inventoryReposiotry.Get(command.Id);
+            var inventory = _inventoryRepository.Get(command.Id);
             if (inventory is null)
                 return operation.Failed(ApplicationMessages.NotFound);
 
-            if (_inventoryReposiotry.Exists(x => x.ProductId == command.ProductId && x.Id != command.Id))
+            if (_inventoryRepository.Exists(x => x.ProductId == command.ProductId && x.Id != command.Id))
                 return operation.Failed(ApplicationMessages.DuplicateRecord);
 
             inventory.Edit(command.ProductId, command.UnitPrice);
-            _inventoryReposiotry.SaveChanges();
+            _inventoryRepository.SaveChanges();
             return operation.Succeeded();
         }
 
         public OperationResult Increase(IncreaseInventory command)
         {
             var operation = new OperationResult();
-            var inventory = _inventoryReposiotry.Get(command.InventoryId);
+            var inventory = _inventoryRepository.Get(command.InventoryId);
             if (inventory is null)
                 return operation.Failed(ApplicationMessages.NotFound);
 
             const long operatorId = 1;
             inventory.Increase(command.Count, operatorId, command.Description);
-            _inventoryReposiotry.SaveChanges();
+            _inventoryRepository.SaveChanges();
             return operation.Succeeded();
         }
 
         public OperationResult Decrease(List<DecreaseInventory> command)
         {
             var operation = new OperationResult();
-            const long operatorId = 1;
+            var operatorId = _authHelper.CurrentAccountId();
             foreach (var item in command)
             {
-                var inventory = _inventoryReposiotry.GetBy(item.ProductId);
+                var inventory = _inventoryRepository.GetBy(item.ProductId);
                 inventory.Reduce(item.Count,operatorId,item.Description,item.OrderId);
 
             }
-            _inventoryReposiotry.SaveChanges();
+            _inventoryRepository.SaveChanges();
             return operation.Succeeded();
         }
 
         public OperationResult Decrease(DecreaseInventory command)
         {
             var operation = new OperationResult();
-            var inventory = _inventoryReposiotry.Get(command.InventoryId);
+            var inventory = _inventoryRepository.Get(command.InventoryId);
             if(inventory is null)
-            return operation.Failed(ApplicationMessages.NotFound);
+                return operation.Failed(ApplicationMessages.NotFound);
 
-            const long operatorId = 1;
+            var operatorId = _authHelper.CurrentAccountId();
             inventory.Reduce(command.Count, operatorId, command.Description, 0);
-            _inventoryReposiotry.SaveChanges();
+            _inventoryRepository.SaveChanges();
             return operation.Succeeded();
         }
 
         public EditInventory GetDetails(long id)
         {
-            return _inventoryReposiotry.GetDetails(id);
+            return _inventoryRepository.GetDetails(id);
         }
 
         public List<InventoryViewModel> Search(InventorySearchModel searchModel)
         {
-            return _inventoryReposiotry.Search(searchModel);
+            return _inventoryRepository.Search(searchModel);
         }
 
         public List<InventoryOperationViewModel> GetOperationLog(long inventoryId)
         {
-            return _inventoryReposiotry.GetOperationLog(inventoryId);
+            return _inventoryRepository.GetOperationLog(inventoryId);
         }
     }
 }

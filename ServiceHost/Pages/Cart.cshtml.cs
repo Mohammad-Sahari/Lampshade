@@ -25,7 +25,7 @@ namespace ServiceHost.Pages
             var value = Request.Cookies[CookieName];
             var cartItems = serializer.Deserialize<List<CartItem>>(value);
 
-            CartItems = _productQuery.CheckInventroyStatus(cartItems);
+            CartItems = _productQuery.CheckInventoryStatus(cartItems);
         }
 
         public IActionResult OnGetRemoveFromCart(long id)
@@ -47,7 +47,7 @@ namespace ServiceHost.Pages
             var value = Request.Cookies[CookieName];
             var cartItems = serializer.Deserialize<List<CartItem>>(value);
 
-            CartItems = _productQuery.CheckInventroyStatus(cartItems);
+            CartItems = _productQuery.CheckInventoryStatus(cartItems);
             return RedirectToPage(CartItems.Any(x => !x.IsInStock) ? "/Cart" : "/Checkout");
         }
     }

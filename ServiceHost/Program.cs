@@ -2,6 +2,7 @@ using System.Text.Encodings.Web;
 using System.Text.Unicode;
 using _0_Framework.Application;
 using _01_Framework.Application;
+using _01_Framework.Application.ZarinPal;
 using _02_LampshadeQuery.Contract;
 using AccountManagement.Infrastructure.Configuration;
 using BlogManagement.Infrastructure.Configuration;
@@ -34,6 +35,7 @@ builder.Services.AddRazorPages()
 services.AddTransient<IFileUploader, FileUploader>();
 services.AddTransient<IAuthHelper, AuthHelper>();
 services.AddSingleton<IPasswordHasher, PasswordHasher>();
+services.AddSingleton<IZarinPalFactory, ZarinPalFactory>();
 services.AddSingleton(HtmlEncoder.Create(UnicodeRanges.BasicLatin, UnicodeRanges.Arabic));
 services.AddHttpContextAccessor();
 services.Configure<CookiePolicyOptions>(options =>

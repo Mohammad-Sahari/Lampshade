@@ -117,6 +117,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccountManagement.Applicati
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccountManagement.Infrastructure.Configuration", "AccountManagement.Infrastructure.Configuration\AccountManagement.Infrastructure.Configuration.csproj", "{1A7D6EEE-5B0C-4B42-BBBF-30F7D82CEC07}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopManagement.Infrastructure.InventoryAcl", "ShopManagement.Infrastructure.InventoryAcl\ShopManagement.Infrastructure.InventoryAcl.csproj", "{48538223-B1FC-4886-8946-425927632F6C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -255,6 +257,10 @@ Global
 		{1A7D6EEE-5B0C-4B42-BBBF-30F7D82CEC07}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1A7D6EEE-5B0C-4B42-BBBF-30F7D82CEC07}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1A7D6EEE-5B0C-4B42-BBBF-30F7D82CEC07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48538223-B1FC-4886-8946-425927632F6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48538223-B1FC-4886-8946-425927632F6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48538223-B1FC-4886-8946-425927632F6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48538223-B1FC-4886-8946-425927632F6C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -308,5 +314,6 @@ Global
 		{6CD0E926-B31E-4934-BE54-D3F15417A0C6} = {2326CC05-30B7-494B-859D-6162096BDA22}
 		{66D5BE35-84AB-46EB-958A-F6F3E792F722} = {20506317-D89A-4FBE-97CD-18F88F1BCD46}
 		{1A7D6EEE-5B0C-4B42-BBBF-30F7D82CEC07} = {2326CC05-30B7-494B-859D-6162096BDA22}
+		{48538223-B1FC-4886-8946-425927632F6C} = {08419960-7FAC-4050-9EE0-7A2547DFA782}
 	EndGlobalSection
 EndGlobal

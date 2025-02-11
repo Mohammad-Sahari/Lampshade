@@ -16,13 +16,13 @@ namespace _02_LampshadeQuery.Query
         private readonly ShopContext _shopContext;
         private readonly InventoryContext _inventoryContext;
         private readonly DiscountContext _discountContext;
-        private readonly CommentContext _commentcontext;
+        private readonly CommentContext _commentContext;
         public ProductQuery(ShopContext shopContext, InventoryContext inventoryContext, DiscountContext discountContext, CommentContext commentcontext)
         {
             _shopContext = shopContext;
             _inventoryContext = inventoryContext;
             _discountContext = discountContext;
-            _commentcontext = commentcontext;
+            _commentContext = commentcontext;
         }
 
         public List<ProductQueryModel> GetLatestProducts()
@@ -174,11 +174,11 @@ namespace _02_LampshadeQuery.Query
                 }
             }
 
-            product.Comments = _commentcontext.Comments
+            product.Comments = _commentContext.Comments
                 .Where(x => x.Type == CommentType.Product)
-                .Where(x=>x.OwnerRecordId == product.Id)
+                .Where(x => x.OwnerRecordId == product.Id)
                 .Where(x => x.IsConfirmed && !x.IsCanceled)
-                .Select(x=> new CommentQueryModel
+                .Select(x => new CommentQueryModel
                 {
                     Id = x.Id,
                     Message = x.Message,
@@ -189,7 +189,7 @@ namespace _02_LampshadeQuery.Query
             return product;
         }
 
-        public List<CartItem> CheckInventroyStatus(List<CartItem> cartItems)
+        public List<CartItem> CheckInventoryStatus(List<CartItem> cartItems)
         {
             //var inventory = _inventoryContext.Inventory.ToList();
             

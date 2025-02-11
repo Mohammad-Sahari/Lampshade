@@ -1,4 +1,5 @@
 ﻿using _02_LampshadeQuery.Contract.Slide;
+using Microsoft.EntityFrameworkCore;
 using ShopManagement.Infrastructure.EFCore;
 
 namespace _02_LampshadeQuery.Query
@@ -14,7 +15,7 @@ namespace _02_LampshadeQuery.Query
 
         public List<SlideQueryModel> GetSlides()
         {
-            return _context.Slides.Where(x=>x.IsRemoved == false).Select(x => new SlideQueryModel
+             return _context.Slides.Where(x=>x.IsRemoved == false).Select(x => new SlideQueryModel
             {
                 Picture = x.Picture,
                 PictureAlt = x.PictureAlt,

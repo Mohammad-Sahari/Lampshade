@@ -7,6 +7,7 @@
         bool IsAuthenticated();
         void DeActiveUser(long id);
         string CurrentAccountRole();
+        long CurrentAccountId();
         AuthViewModel CurrentAccountInfo();
         List<int> GetPermissions();
     }

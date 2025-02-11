@@ -27,7 +27,7 @@ namespace ShopManagement.Infrastructure.EFCore.Repository
                 Picture = x.Picture,
                 CategoryId = x.CategoryId,
                 CreationDate = x.CreationDate.ToFarsi()
-            });
+            }).AsNoTracking();
             if (!string.IsNullOrWhiteSpace(command.Name))
                 query = query.Where(x => x.Name.Contains(command.Name));
             

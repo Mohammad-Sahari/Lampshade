@@ -1,0 +1,36 @@
+﻿@using _01_Framework.Application
+@using Microsoft.AspNetCore.Http.Features
+@model List<ShopManagement.Application.Contracts.Order.OrderItemViewModel>
+@{
+}
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h4 class="modal-title">آیتم های خریداری شده</h4>
+</div>
+
+<div class="modal-body">
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+        <th>محصول</th>
+        <th>تعداد</th>
+        <th>قیمت واحد</th>
+        <th>درصد تخفیف</th>
+        </thead>
+        <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Product</td>
+                <td>@item.Count عدد</td>
+                <td>@item.UnitPrice.ToMoney() تومان</td>
+                <td>@item.DiscountRate</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-light waves-effect waves-light" data-dismiss="modal">بستن</button>
+</div>
